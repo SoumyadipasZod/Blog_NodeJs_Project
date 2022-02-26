@@ -1,0 +1,51 @@
+<%- include("partial/header") %> 
+<%- include("partial/nav") %>
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/web/assets/img/login.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="site-heading">
+                  <h1></h1>
+                  <span class="subheading">Login for reading our excited blogs</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<!-- main-content -->
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="card">
+      <div class="p-3 border-bottom d-flex align-items-center justify-content-center">
+          <h5>Login to MyBLOG</h5>
+      </div>
+<!-- put flash -->
+<% if(message.length > 0) { %>
+  <div class="alert <%- alert %> alert fade show" role="alert">
+      <strong>Hey...</strong>
+      <%- message %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <% } %>
+  <!-- end flash -->
+
+  <form action="/add-login" method="post">
+    <div class="p-3 px-4 py-4 border-bottom"> <input type="email" class="form-control mb-2" name="email"
+            placeholder="Email" />
+        <div class="form"> <input type="password" class="form-control" name="password" placeholder="Password" />
+        </div> <button class="btn btn-danger btn-block continue">Login</button>
+        <!-- <div class="d-flex justify-content-center align-items-center mt-3 mb-3"> <span class="line"></span>
+            <small class="px-2 line-text">OR</small> <span class="line"></span> </div> -->
+    </div>
+</form>
+<div class="p-3 d-flex flex-row justify-content-center align-items-center member"> <span>Not a member? </span>
+    <a href="/register" class="text-decoration-none ml-2">REGISTER</a> </div>
+</div>
+</div>
+<!-- Footer-->
+
+
+<%- include("partial/footer") %>

@@ -1,0 +1,78 @@
+<%- include("partial/header") %> <%- include("partial/nav") %>
+
+<title>Our-Blog </title>
+<style>
+    .disabled{
+        pointer-events:none;
+        cursor: not-allowed;
+    }
+</style>
+</head>
+<body>
+    
+
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('/web/assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Node Blog </h1>
+                        <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <!-- flash-message -->
+        <% if(message.length > 0) { %>
+            <div class="alert <%- alert %> alert-dismissible fade show" role="alert">
+                <strong>Hey...</strong>
+                <%- message %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <% } %>
+        <!-- flash-message -->
+    <!-- Main Content-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Post preview-->
+                    <% if(data.docs && data.docs.length > 0) {%>
+                    <% for(let postdata of data.docs){ %>
+                <div class="post-preview">
+                    <a href="/viewpost/<%= postdata.slug%>">
+                        <h2 class="post-title"><%= postdata.title%></h2>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!"><%= postdata.author %></a> On
+                        <%= postdata.posted_at%>>
+                    </p>
+                </div>
+                <% }} %>
+                
+                <!-- Divider-->
+                <hr class="my-4" />
+
+                <!-- pager & pagination add -->
+                <div class="d-flex justify-content-end mb-4">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link <%= !data.hasPrevPage ? 'disabled' : ''%>" href="<%= data.prevPage ? `?page =${data.prevPage}` : ''%>">Previous</a></li>
+                          <% if(data.totalPages){ for(i=1; i<=data.totalPages; i++){ %>
+                          <li class="page-item <%= (pager ==i) ? 'active' : '' %>"><a class="page-link" href=" ?page=<%= i %>"><%= i %></a></li>
+                          <%}} %>
+                          <li class="page-item"><a class="page-link <%= !data.hasNextPage ? 'disabled' : ''%>" href="<%= data.nextPage ? `?page =${data.nextPage}` : ''%>">Next</a></li>
+
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+<%- include("partial/footer") %>

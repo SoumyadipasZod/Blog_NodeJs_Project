@@ -1,0 +1,72 @@
+<%- include("partial/header") %>
+ <%- include("partial/nav") %>
+
+  <!-- Page Header-->
+  <header class="masthead" style="background-image: url('/web/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>Node Blog Post Page</h1>
+                    <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <!-----Login form------>
+    <div class="contact-form benefit">
+     <div class="container px-4 px-lg-5">
+         <div class="row gx-4 gx-lg-5 justify-content-center">
+             
+             <div class="col-lg-5 ml-auto mr-auto">
+                 <h2 class="heading"><%= title%></h2>
+                 <div class="formpart">  
+                    <form action="/addpost"  method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Title</label>
+                            <input id="name" class="form-control" type="text" name="title">
+                        </div>
+
+                        <!-- author -->
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input id="author" class="form-control" type="text" name="author">
+                        </div>
+
+                       
+                        <div class="form-group">
+                           <label for="subtitle">Subtitle</label>
+                           <input id="subtitle" class="form-control" type="text" name="subtitle">
+                       </div>
+                       <div class="form-group">
+                        <label for="image" >Image</label>
+                        <input  type="file" class="form-control" name="image">
+                    </div>
+                       <div class="form-group">
+                           <label for="post">Post</label>
+                           <textarea class="form-control"   name="editor1"></textarea>
+                       </div>
+                        <div class="form-group">
+                            <div class="submit mt-5">
+                                <button type="submit" class="btn w-100 btn-warning">
+                                    <span>Submit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            
+             </div>
+         </div>
+     </div>
+    </div>
+    
+    </main>
+<%- include("partial/footer") %>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'editor1' );
+</script>
